@@ -44,3 +44,6 @@ The DBMS stores the values of a single attribute for all tuples contiguously in 
   * SybasIQ, Vertica, Druid, Clickhouse, Pinot, MonetDB
 
 ## Buffer Pool Manager ##
+Buffer pool is a memory region organized as an array of fixed-size pages called frames.
+Page table keeps track of which pages are currently in memory.
+
