@@ -47,3 +47,21 @@ The DBMS stores the values of a single attribute for all tuples contiguously in 
 Buffer pool is a memory region organized as an array of fixed-size pages called frames.
 Page table keeps track of which pages are currently in memory.
 
+### OS page cache
+DBMS bypass Page cache using direct IO
+
+###  Buffer Pool Eviction Policies
+- LRU
+- Clock ( Approximate LRU )
+- Susceptible to sequential flooding
+
+## Access Methods
+How DBMS execution engine reads/writes pages.
+
+###  Hash Tables
+
+Static Hashing
+
+Dynamic Hashing
+
+### Trees
