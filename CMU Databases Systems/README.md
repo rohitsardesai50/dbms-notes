@@ -112,4 +112,52 @@ Can use different overflow criterion:
 → Space Utilization
 → Average Length of Overflow Chains
 
-### Trees
+### Table Indexes
+Hash tables are good for point lookups with sequential scans. For range scans we need table indexes.
+A table index is a replica of a subset of a table's attributes that are organized and/or sorted for efficient access using a subset of those attributes.
+The DBMS ensures that the contents of the table and the index are logically in sync.
+
+It is the DBMS's job to figure out the best index(es) to use to execute each query.
+There is a trade-off on the number of indexes to create per database.
+→ Storage Overhead
+→ Maintenance Overhead
+
+#### B+Trees
+There is a specific data structure called a B-Tree.
+People also use the term to generally refer to a class of balanced tree data structures:
+→ B-Tree (1971)
+→ B+Tree (1973)
+→ B*Tree (1977?)
+→ B link-Tree (1981)
+
+
+A B+Tree is a self-balancing tree data structure that keeps data sorted and allows searches, sequential access,
+insertions, and deletions in O(log n).
+→ Generalization of a binary search tree in that a node can have more than two children.
+→ Optimized for systems that read and write large blocks of data.
+
+
+The original B-Tree from 1972 stored keys + values in all nodes in the tree.
+→ More space efficient since each key only appears once in the tree.
+A B+Tree only stores values in leaf nodes. Inner nodes only guide the search process.
+
+B+TREE VISUALIZATION
+https://cmudb.io/btree
+Source: David Gales (Univ. of San Francisco)
+
+Clustered Indexes
+The table is stored in the sort order specified by
+the primary key.
+→ Can be either heap- or index-organized storage.
+Some DBMSs always use a clustered index.
+→ If a table doesn’t contain a primary key, the DBMS will automatically make a hidden row id primary key.
+Other DBMSs cannot use them at all.
+
+INTRA-NODE SEARCH
+Approach #1: Linear
+→ Scan node keys from beginning to end.
+Approach #2: Binary
+→ Jump to middle key, pivot left/right depending on comparison.
+Approach #3: Interpolation
+→ Approximate location of desired key based on known distribution of keys.
+
